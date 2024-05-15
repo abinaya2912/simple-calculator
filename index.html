@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple calculator</title>
+    <style>
+        body {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url("https://img.freepik.com/free-photo/blue-blank-notepad-with-copy-space_23-2148475334.jpg?w=996&t=st=1714899087~exp=1714899687~hmac=ad39f288bc0326051c9fa71d2efb4ff8fcf918518b5ea09a83d201124bf4c484");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container {
+            width: 400px;
+            background-color: #ded2d2;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        button {
+            background-color: rgb(22, 171, 240);
+            color: #fff;
+            border-radius: 5px;
+            border-color: rgb(129, 220, 234);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="calculatorForm">
+            <h1 style="text-align: center;">Simple Calculator</h1>
+            <label for="num1">Enter the first number:</label>
+            <input type="number" name="num1" id="num1"><br><br>
+            <label for="num2">Enter the second number</label>
+            <input type="number" name="num2" id="num2"><br><br>
+            <label for="operation">Select operation:</label>
+            <select name="operation" id="operation">
+                <option value="add">Add</option>
+                <option value="sub">Subtract</option>
+                <option value="product">Product</option>
+                <option value="divide">Divide</option>
+                <option value="modulo">Modulo</option>
+            </select><br><br>
+            <button type="button" onclick="calculate()">Calculate</button>
+        </form>
+    </div>
+    <script>
+        function calculate() {
+            var form = document.getElementById("calculatorForm");
+            var num1 = parseFloat(form.num1.value);
+            var num2 = parseFloat(form.num2.value);
+            var operation = form.operation.value;
+            var url = "http://localhost:4000/" + operation + "?num1=" + num1 + "&num2=" + num2;
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
